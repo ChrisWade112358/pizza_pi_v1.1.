@@ -25,6 +25,30 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+# Devise for Authentication
+gem 'devise'
+
+# Image upload service
+gem 'carrierwave'
+
+# makes thumbnails with Carrierwave
+gem 'mini_magick'
+
+# Better Errors
+gem 'better_errors', '~> 2.4'
+
+# For Live reload of views
+gem 'guard-livereload'
+
+# To kill runaway server
+gem 'shutup'
+
+# Pry for debugging
+gem 'pry'
+
+# Jquery for subtotal updates
+gem 'jquery-rails', '~> 4.4'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
