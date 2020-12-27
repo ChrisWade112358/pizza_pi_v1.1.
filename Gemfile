@@ -28,6 +28,12 @@ gem 'jbuilder', '~> 2.7'
 # Devise for Authentication
 gem 'devise'
 
+# Devise Omniauth
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
+
 # Image upload service
 gem 'carrierwave'
 
