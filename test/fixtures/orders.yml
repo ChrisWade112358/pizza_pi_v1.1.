@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  line_item_id: 1
+  cart_id: 1
+  tax: 9.99
+  tax_rate.decimal: MyString
+  delivery: false
+  delivery_fee: 9.99
+  order_subtotal: 9.99
+  total: 9.99
+
+two:
+  line_item_id: 1
+  cart_id: 1
+  tax: 9.99
+  tax_rate.decimal: MyString
+  delivery: false
+  delivery_fee: 9.99
+  order_subtotal: 9.99
+  total: 9.99

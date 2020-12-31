@@ -10,11 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_31_015329) do
+ActiveRecord::Schema.define(version: 2020_12_31_021108) do
 
   create_table "carts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.text "order_ids"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "line_item_id", null: false
+    t.integer "cart_id", null: false
+    t.decimal "tax", precision: 15, scale: 2, default: "0.0"
+    t.decimal "tax_rate", precision: 15, scale: 2, default: "0.0"
+    t.boolean "delivery", default: false, null: false
+    t.decimal "delivery_fee", precision: 15, scale: 2, default: "0.0"
+    t.decimal "order_subtotal", precision: 15, scale: 2, default: "0.0"
+    t.decimal "total", precision: 15, scale: 2, default: "0.0"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
