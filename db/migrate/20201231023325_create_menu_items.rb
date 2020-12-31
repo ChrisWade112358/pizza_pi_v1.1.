@@ -5,7 +5,7 @@ class CreateMenuItems < ActiveRecord::Migration[6.1]
       t.text :description
       t.string :category, null: false
       t.string :image
-      t.decimal :price, default: "0.00", precision 15, scale: 2
+      t.decimal :price, default: "0.00", precision: 15, scale: 2
 
       t.timestamps
     end
