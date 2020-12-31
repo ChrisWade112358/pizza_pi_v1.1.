@@ -33,6 +33,8 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
+gem 'omniauth-github'
+gem 'activerecord-session_store'
 
 # Image upload service
 gem 'carrierwave'
