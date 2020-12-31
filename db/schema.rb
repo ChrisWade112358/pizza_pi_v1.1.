@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_30_030249) do
+ActiveRecord::Schema.define(version: 2020_12_31_015329) do
+
+  create_table "carts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.text "order_ids"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "sessions", force: :cascade do |t|
     t.string "session_id", null: false
