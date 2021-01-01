@@ -1,0 +1,21 @@
+<h1>Menu Item Show</h1>
+
+<% if @menu_item.image? %>
+    <%= image_tag(@menu_item.image.url, alt: 'Image') if @menu_item.image? %>
+<% end %>
+
+<h2><%= @menu_item.name %></h2>
+<p>
+    <strong>Category: <%= @menu_item.category %></strong>
+</p>
+<p>
+    <strong><%= number_to_currency(@menu_item.price) %></strong>
+</p>
+
+<p>
+    <strong>Description:</strong><br>
+    <%= @menu_item.description %>
+</p>
+
+<%= button_to "Edit", edit_menu_item_path(@menu_item), :method => :get %>
+<%= button_to "Delete", menu_item_path(@menu_item), method: :delete, data: { confirm: " Are you sure?" } %>

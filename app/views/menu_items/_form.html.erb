@@ -1,0 +1,11 @@
+<%= form_for @menu_item do |form| %>
+    Name: <%= form.text_field :name, required: true %><br>
+    Price: <%= form.text_field :price, required: true %><br>
+    <div class="form-group">
+    category: <%= form.select(:category, MenuItem::CATEGORY) %>
+    </div>
+    Description: <%= form.text_area :description %><br>
+    Add Images: <%= form.file_field :image %><br>
+    
+    <%= form.submit %>
+<% end %>

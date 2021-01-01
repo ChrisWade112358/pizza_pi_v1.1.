@@ -1,0 +1,15 @@
+<h1>Menu Index Page</h1>
+
+
+
+<% @menu_items.each  do |item| %>
+    <h2><%= item.name %></h2>
+    <p>$<%= item.price %></p>
+    <p><%= item.description %></p>
+    <%= button_to "Item Description", menu_path(item), :method => :get %>
+    
+    
+<% end %>
+
+
+<%= link_to "Go to Cart", cart_path(@current_cart.id) %>
