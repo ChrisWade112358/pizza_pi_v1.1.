@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :menus, only:[:index, :show]
   resources :menu_items
   resources :line_items
   resources :orders
