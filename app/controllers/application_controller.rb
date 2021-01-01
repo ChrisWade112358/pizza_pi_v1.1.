@@ -19,6 +19,11 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def current_order
+        if order_id == nil
+            
+
+
     def check_for_cart
         if current_user == nil
             

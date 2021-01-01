@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-    belongs_to :user
+   
     
     def index
         @carts = Cart.all

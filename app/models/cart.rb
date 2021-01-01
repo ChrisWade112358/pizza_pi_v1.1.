@@ -14,4 +14,5 @@ class Cart < ApplicationRecord
             :user_id,
             :order_id
         )
+    end
 end
