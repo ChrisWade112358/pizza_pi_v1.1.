@@ -20,7 +20,9 @@ class ApplicationController < ActionController::Base
     end
 
     def current_order
+        order_number = i + 1
         if order_id == nil
+            @current_order = Order.create(order_number: order_number, datetime: Time.now, cart_id: current_cart)
             
 
 
