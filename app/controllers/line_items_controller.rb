@@ -18,7 +18,7 @@ class LineItemsController < ApplicationController
     end
 
     def update
-        binding.pry
+        
         @line_item = LineItem.find_by(id: params[:id])
         if @line_item.update(line_item_params)
             

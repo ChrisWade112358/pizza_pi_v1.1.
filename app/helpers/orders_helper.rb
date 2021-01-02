@@ -1,28 +1,42 @@
 module OrdersHelper
     def subtotal
-        
-        subtotal = 0.00
-        if @line_items != nil
-            @line_items.each do |line_item|
-                binding.pry
+        @order.order_subtotal = 0.0
+            @order.line_items.each do |line_item|
                 if line_item != nil
-                    a = line_item.unit_price * line_item.quantity
-                    subtotal += a
+                    @order.order_subtotal = @order.order_subtotal + line_item.line_item_subtotal        
                 else
-                    a = 0.00
-                    subtotal += a
-                end
-            end
-        end
-        binding.pry
-        subtotal 
+                    @order.order_subtotal = @order.order_subtotal + 0.00
+                end     
+            end    
     end
+
+    def total
+        if @order.delivery == true
+            @order.total = @order.order_subtotal + @order.tax + @order.delivery_fee
+        else
+            @order.total = @order.order_subtotal + @order.tax
+        end
+    end
+
+    def tax
+        @order.tax = @order.order_subtotal * @order.tax_rate
+    end
+
+    
 
 
     private
 
     def set_subtotal
+        subtotal
+    end
+
+    def set_total
+        total
+    end
+
+    def set_tax
         binding.pry
-        self[:order_subtotal] = subtotal
+        tax
     end
 end

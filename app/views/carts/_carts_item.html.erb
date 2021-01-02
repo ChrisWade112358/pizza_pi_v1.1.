@@ -1,4 +1,6 @@
-<h1><%= @current_order.id %></h1>
+<h3>This cart belongs to: <%= @current_cart.user.name %></h3>
+
+<h1>Order # <%= @current_order.id %></h1>
 
 <% @current_order.line_items.each do |i| %>
         
@@ -20,3 +22,11 @@
 
     <%= button_to "Delete Item", line_item_path(i), method: :delete, data: { confirm: " Are you sure?" } %>
 <% end %>
+
+
+<h2>Subtotal: <%= number_to_currency(@order.order_subtotal) %></h2>
+<% if @order.delivery == true %>
+    <><%= number_to_currency(@order.delivery_fee) %></>
+<% end %>
+<h3>!<%= number_to_currency(@order.tax)%></h3>
+<h2>Total: <%= number_to_currency(@order.total)%></h2>
