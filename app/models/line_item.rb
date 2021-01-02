@@ -1,18 +1,18 @@
 class LineItem < ApplicationRecord
     belongs_to :order
-    has_many :menu_items
+    belongs_to :menu_item
 
-    before_save :set_total
+    
 
 
-    def total
+    def line_item_subtotal
         menu_item.price * quantity
     end
 
 
     private
 
-    def set_total
+    def set_line_item_subtotal
         self[:line_item_subtotal] = total * quantity
     end
 end

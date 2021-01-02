@@ -1,4 +1,5 @@
 class LineItemsController < ApplicationController
+    before_action :current_order, only: [:create, :update, :destroy]
 
     def index
         @line_items = LineItem.all
@@ -9,22 +10,9 @@ class LineItemsController < ApplicationController
     end
     
     def create
-        @menu_item = MenuItem.find_by(id: params[:menu_item_id])
-        @quantity = params[:quantity].to_i
-        @l_i_subtotal = @menu_item.price * @quantity
-        @line_item = LineItem.new(
-            order_id: params[:order_id],
-            :menu_item_id => params[:menu_item_id],
-            quantity: params[:quantity],
-            :line_item_subtotal => @l_i_subtotal
-            
-        )
-       
-        if @line_item.save
-            redirect_to menus_path, notice: "Item added to cart."
-        else
-            redirect_to menus_path, notice: "Item NOT added to cart."
-        end
+        @order = current_order
+        @line_item = @order.line_items.new(line_item_params)
+        @order.save
     end
 
     def update

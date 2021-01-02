@@ -1,5 +1,6 @@
 <h1>Menu Item Show</h1>
 
+
 <% if @menu_item.image? %>
     <%= image_tag(@menu_item.image.url, alt: 'Image') if @menu_item.image? %>
 <% end %>

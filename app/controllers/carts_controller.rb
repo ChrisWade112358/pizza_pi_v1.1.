@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-   
+    before_action :current_order
     
     def index
         @carts = Cart.all

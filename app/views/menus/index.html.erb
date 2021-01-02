@@ -9,7 +9,8 @@
     <%= button_to "Item Description", menu_path(item), :method => :get %>
     
     
+    
 <% end %>
 
 
-<%= link_to "Go to Cart", cart_path(@current_cart.id) %>
+<%= link_to "#{current_order.line_items.size} items $#{current_order.subtotal}", carts_path %>
