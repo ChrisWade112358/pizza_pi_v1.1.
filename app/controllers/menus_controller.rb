@@ -3,8 +3,7 @@ class MenusController < ApplicationController
   
     def index
       @menu_items = MenuItem.all
-      @line_item = current_order.line_items.new
-      binding.pry
+      @line_items = current_order.line_items.new
     end
   
     def show

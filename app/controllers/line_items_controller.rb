@@ -1,5 +1,6 @@
 class LineItemsController < ApplicationController
     before_action :current_order, only: [:create, :update, :destroy]
+    after_action :set_subtotal, only: [:create, :update, :destroy]
 
     def index
         @line_items = LineItem.all
@@ -12,12 +13,15 @@ class LineItemsController < ApplicationController
     def create
         @order = current_order
         @line_item = @order.line_items.new(line_item_params)
+        
         @order.save
     end
 
     def update
+        binding.pry
         @line_item = LineItem.find_by(id: params[:id])
         if @line_item.update(line_item_params)
+            
             redirect_to cart_path(@current_cart)
         else
             redirect_to cart_path(@current_cart), alert: "Item did NOT update."

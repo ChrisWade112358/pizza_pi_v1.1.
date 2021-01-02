@@ -2,9 +2,9 @@
 
 <% @current_order.line_items.each do |i| %>
         
-        <% binding.pry %>
-        <h2><%= m.name %></h2>
-        <b><%= m.price %></b>
+        
+        <h2><%= i.menu_item.name %></h2>
+        <b><%= i.menu_item.price %></b>
         <%= form_for i, remote: true do |f|%>
           <%= f.hidden_field :menu_item_id, :value => i.menu_item_id %>
           <%= f.number_field :quantity, :value => i.quantity.to_i %> 
@@ -14,8 +14,8 @@
                 
             
             
+        <i><%= number_to_currency(i.line_item_subtotal) %></i> 
         
-        <i><%= number_to_currency(i.line_item_subtotal) %></i>
     
 
     <%= button_to "Delete Item", line_item_path(i), method: :delete, data: { confirm: " Are you sure?" } %>

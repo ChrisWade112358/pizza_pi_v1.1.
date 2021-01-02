@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
     include ApplicationHelper
+    include OrdersHelper
     before_action :check_for_cart
     
     def current_cart

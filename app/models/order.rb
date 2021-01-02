@@ -2,7 +2,7 @@ class Order < ApplicationRecord
     belongs_to :cart
     has_many :line_items
     has_many :menu_items, through: :line_items
-    before_save :set_subtotal
+    
     
 
     def self.cart_orders(id)
@@ -11,15 +11,28 @@ class Order < ApplicationRecord
 
 
     def subtotal
-        binding.pry
-        line_items.collect{|line_item| line_item.valid? ? line_item.price * line_item.quantity : 0}.sum
+        
+        subtotal = 0.00
+        if @line_items != nil
+            @line_items.each do |line_item|
+                binding.pry
+                if line_item != nil
+                    a = line_item.unit_price * line_item.quantity
+                    subtotal += a
+                else
+                    a = 0.00
+                    subtotal += a
+                end
+            end
+        end
+        subtotal 
     end
 
 
     private
 
     def set_subtotal
-        self[:subtotal] = subtotal
+        self[:order_subtotal] = subtotal
     end
 
 end

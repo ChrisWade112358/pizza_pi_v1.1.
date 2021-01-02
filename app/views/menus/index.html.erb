@@ -13,4 +13,4 @@
 <% end %>
 
 
-<%= link_to "#{current_order.line_items.size} items $#{current_order.subtotal}", carts_path %>
+<%= link_to "#{current_order.line_items.size} items $#{current_order.subtotal}", cart_path(current_cart) %>
