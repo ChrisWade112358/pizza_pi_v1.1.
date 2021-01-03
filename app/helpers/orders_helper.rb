@@ -12,13 +12,15 @@ module OrdersHelper
 
     def total
         if @order.delivery == true
-            @order.total = @order.order_subtotal + @order.tax + @order.delivery_fee
+            @order.total = @order.order_subtotal + tax + @order.delivery_fee
         else
-            @order.total = @order.order_subtotal + @order.tax
+            
+            @order.total = @order.order_subtotal + tax
         end
     end
 
     def tax
+        binding.pry
         @order.tax = @order.order_subtotal * @order.tax_rate
     end
 
@@ -35,8 +37,5 @@ module OrdersHelper
         total
     end
 
-    def set_tax
-        binding.pry
-        tax
-    end
+    
 end

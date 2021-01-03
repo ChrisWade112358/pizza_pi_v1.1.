@@ -2,7 +2,7 @@ class CartsController < ApplicationController
     before_action :current_order
     before_action :set_subtotal
     before_action :set_total
-    before_action :set_tax
+    
     
     def index
         @carts = Cart.all

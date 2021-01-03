@@ -28,5 +28,5 @@
 <% if @order.delivery == true %>
     <><%= number_to_currency(@order.delivery_fee) %></>
 <% end %>
-<h3>!<%= number_to_currency(@order.tax)%></h3>
+<h3><%= number_to_currency(@order.tax)%></h3>
 <h2>Total: <%= number_to_currency(@order.total)%></h2>
