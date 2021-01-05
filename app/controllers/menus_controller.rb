@@ -8,6 +8,8 @@ class MenusController < ApplicationController
   
     def show
       @menu_item = MenuItem.find(params[:id])
+      @line_items = current_order.line_items.build
+      
     end
   
   

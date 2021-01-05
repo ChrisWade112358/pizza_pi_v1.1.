@@ -20,7 +20,7 @@ module OrdersHelper
     end
 
     def tax
-        binding.pry
+       
         @order.tax = @order.order_subtotal * @order.tax_rate
     end
 

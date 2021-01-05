@@ -30,3 +30,5 @@
 <% end %>
 <h3><%= number_to_currency(@order.tax)%></h3>
 <h2>Total: <%= number_to_currency(@order.total)%></h2>
+
+<%= button_to 'Submit your order', submissions_path, :method => :get %>

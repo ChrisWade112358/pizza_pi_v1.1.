@@ -19,11 +19,10 @@
 </p>
 
 
-<%= form_tag line_items_path do%>
-    <%= hidden_field_tag :cart_id, @current_cart.id%>
-    <%= hidden_field_tag :menu_item_id, @menu_item.id%>
-    <%= hidden_field_tag :price, @menu_item.price%>
-    <%= number_field_tag :quantity, 1 %>
+<%= form_tag line_items_path, method: :post do%>
+    <%= hidden_field_tag "line_item[order_id]", @order.id%>
+    <%= hidden_field_tag "line_item[menu_item_id]", @menu_item.id%>
+    <%= number_field_tag "line_item[quantity]", 1 %>
     <%= submit_tag "Add to Cart"%>
 <% end %>
 

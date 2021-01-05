@@ -11,15 +11,19 @@ class User < ApplicationRecord
 
   STATE = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','District of Columbia','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia','Wisconsin','Wyoming']
 
-  def self.create_from_provider_data(provider_data)
-    where(provider: provider_data.provider, uid: provider_data.uid).first_or_create do |user|
-      user.email = provider_data.info.email
-      user.password = Devise.friendly_token[0, 20]
-    end
-  end
+  def self.create_from_provider_data(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+    first_name = auth.info.name.split(" ")[0]
+    last_name = auth.info.name.split(" ")[1]
 
-  def name
-   name = "#{first_name} #{last_name}"
-  end
+    user.email = auth.info.email
+    user.password = Devise.friendly_token[0,20]
+    user.first_name = first_name
+    user.last_name = last_name
+    user.phone_number = "please add valid phone number"
+  end      
+end
+
+  
 
 end

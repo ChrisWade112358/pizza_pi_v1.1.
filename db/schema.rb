@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_02_210242) do
+ActiveRecord::Schema.define(version: 2021_01_05_033301) do
 
   create_table "carts", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -83,10 +83,12 @@ ActiveRecord::Schema.define(version: 2021_01_02_210242) do
     t.boolean "employee", default: false
     t.boolean "manager", default: false
     t.string "address"
-    t.string "provider", limit: 50, default: "", null: false
-    t.string "uid", limit: 500, default: "", null: false
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["provider"], name: "index_users_on_provider"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["uid"], name: "index_users_on_uid"
   end
 
 end

@@ -21,8 +21,10 @@ module ApplicationHelper
     
 
     def current_order
+        
         @order = Order.cart_orders(current_cart.id).last
         if @order == nil
+            
             current_order = Order.create(cart_id: current_cart.id, datetime: Time.now)
         else
             if @order.order_status == false

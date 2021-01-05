@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
     include OrdersHelper
     before_action :check_for_cart
     
+   
     
 
     

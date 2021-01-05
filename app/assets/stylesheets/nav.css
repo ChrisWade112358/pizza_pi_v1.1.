@@ -1,0 +1,13 @@
+.my-nav {background-color: #eee1aa;}
+    .my-nav .navbar-image{height: 5%; width: 5%; display: inline-block; padding-top: .3125rem; padding-bottom: .3125rem; margin_right: 1rem; font-size: 1.25rem; line-height: 1.5; white-space: nowrap;}
+    .my-nav .navbar-image-cart{height: 9%; width: 9%; display: inline-block; padding-top: .3125rem; padding-bottom: .3125rem; margin_right: 1rem; font-size: 1.25rem; line-height: 1.5; white-space: nowrap;}
+    .my-nav .nav-link{color: #666600; float: right; border: 2px red}
+    .my-nav .nav-link:hover{color: beige;}
+    .my-nav .dropdown-menu{background-color: tan;}
+    .my-nav .active{background-color: #666600}
+    .my-nav .nav-item{list-style-type:none; border: 2px red}
+    
+.custom-toggler {background-color: #4d7346; }
+.custom-toggler .navbar-toggler-icon { 
+    background-image: url("http://ep.yimg.com/ty/cdn/yhst-11400100427085/mobile-menu-icon.png")
+}

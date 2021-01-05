@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 24.3.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 841.89 595.28" style="enable-background:new 0 0 841.89 595.28;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#66682C;}
+	.st1{fill:none;stroke:#D2B48D;stroke-width:9;stroke-miterlimit:10;}
+</style>
+<symbol  id="Icon" viewBox="-512 -512 1024 1024">
+	<path id="App_Icon_Placeholder_4_" class="st0" d="M-155.01,512h310c102.81,0,154.19,0,209.53-17.49
+		c60.42-21.99,108-69.58,129.98-129.99C512,309.17,512,257.78,512,154.99v-309.98c0-102.8,0-154.19-17.5-209.53
+		c-21.98-60.42-69.57-108-129.98-129.98C309.18-512,257.8-512,154.99-512h-310c-102.79,0-154.18,0-209.51,17.5
+		c-60.42,21.98-108,69.57-129.98,129.98C-512-309.18-512-257.79-512-154.99v309.98c0,102.79,0,154.18,17.5,209.53
+		c21.98,60.42,69.57,108,129.98,129.99C-309.18,512-257.8,512-155.01,512L-155.01,512"/>
+	<line class="st1" x1="-401.49" y1="40.95" x2="406.51" y2="41.95"/>
+	<line class="st1" x1="-401.49" y1="-34.05" x2="406.51" y2="-33.05"/>
+	<line class="st1" x1="-400.49" y1="-106.05" x2="407.51" y2="-105.05"/>
+	<line class="st1" x1="-401.49" y1="105.95" x2="406.51" y2="106.95"/>
+</symbol>
+<use xlink:href="#Icon"  width="1024" height="1024" id="XMLID_1_" x="-512" y="-512" transform="matrix(0.0586 0 0 -0.0586 421.2258 297.5161)" style="overflow:visible;"/>
+</svg>
