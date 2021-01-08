@@ -48,7 +48,7 @@ class LineItemsController < ApplicationController
 
     def line_item_params
         params.require(:line_item).permit(:menu_item_id, :quantity, :order_id,
-            order_attributes: [:delivery]
+            ingredient_attributes: [:name, :price]
         )
     end
 end

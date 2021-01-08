@@ -10,10 +10,11 @@ class MenuItemsController < ApplicationController
 
     def new
         @menu_item = MenuItem.new
+        @category = Category.build(name: "name")
     end
 
     def create
-        
+        binding.pry
         @menu_item = MenuItem.create(menu_item_params)
         if @menu_item.save
             redirect_to menu_item_path(@menu_item), notice: "Menu item was successfully created."
@@ -51,6 +52,10 @@ class MenuItemsController < ApplicationController
     private
 
         def menu_item_params
-            params.require(:menu_item).permit(:name, :description, :price, :category, :image)
+            params.require(:menu_item).permit(:name, :description, :price, :category, :image,
+                category_atributes: [
+                    :name
+                ]
+            )
         end
 end

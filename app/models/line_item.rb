@@ -1,7 +1,8 @@
 class LineItem < ApplicationRecord
     has_many :orders
+    has_many :ingredients
     belongs_to :menu_item
-    accepts_nested_attributes_for :orders
+
 
     def line_item_subtotal
         unit_price = menu_item.price

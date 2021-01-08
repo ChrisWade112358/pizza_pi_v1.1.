@@ -11,7 +11,9 @@
                 <li class="nav-item"><%= button_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
                 <% if current_user.manager == true %>
                     <li class="nav-item"><%= button_to "Add Menu Items", new_menu_item_path, :method => :get %></li>
-                    <li class="nav-item"><%= button_to "list Menu Items", menu_items_path, :method => :get %></li>
+                    <li class="nav-item"><%= button_to "List Menu Items", menu_items_path, :method => :get %></li>
+                    <li class="nav-item"><%= button_to "Add Ingredients", new_ingredient_path, :method => :get %></li>
+                    <li class="nav-item"><%= button_to "List Ingredient", ingredients_path, :method => :get %></li>
                 <% end %>
 
             <% else %>
