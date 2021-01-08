@@ -2,14 +2,13 @@ class LineItemsController < ApplicationController
     before_action :current_order
     before_action :set_order, only:[:index, :show, :create, :update]
     after_action :set_subtotal, only: [:create, :update, :destroy]
-    
+    before_actien :set_line_item, only: [:show, :edit, :update, :destroy]
 
     def index
         @line_items = LineItem.all
     end
 
     def show
-        @line_item = LineItem.find_by(id: params[:id])
     end
     
     def create
@@ -25,8 +24,6 @@ class LineItemsController < ApplicationController
     end
 
     def update
-        
-        @line_item = LineItem.find_by(id: params[:id])
         if @line_item.update(line_item_params)
             
             redirect_to cart_path(@current_cart)
@@ -37,7 +34,7 @@ class LineItemsController < ApplicationController
     end
 
     def destroy
-        @line_item = LineItem.find_by(id: params[:id]).destroy
+        @line_item.destroy
         redirect_to cart_path(@current_cart), notice: "Item deleted from Cart."
     end
 
@@ -50,5 +47,9 @@ class LineItemsController < ApplicationController
         params.require(:line_item).permit(:menu_item_id, :quantity, :order_id,
             ingredient_attributes: [:name, :price]
         )
+    end
+
+    def set_line_item
+        @line_item = LineItem.find_by(id: params[:id])
     end
 end
