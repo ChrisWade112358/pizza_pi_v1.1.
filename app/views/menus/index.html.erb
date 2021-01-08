@@ -1,6 +1,12 @@
 <h1>Menu Index Page</h1>
 
-
+<% if @order.delivery == true %>
+    <label for="@delivery"><H2>Delivery:</H2></label>
+    <input type="checkbox" id="@delivery" name="@delivery" value="true" checked>
+<% else %>
+    <label for="@delivery"><H2>Delivery:</H2></label>
+    <input type="checkbox" id="@delivery" name="@delivery" value="true" >
+<% end %>
 
 <% @menu_items.each  do |item| %>
     <h2><%= item.name %></h2>
@@ -8,9 +14,19 @@
     <p><%= item.description %></p>
     <%= button_to "Item Description", menu_path(item), :method => :get %>
     
-    
-    
+    <%= form_for LineItem.new do |f| %>
+        
+        <%= f.hidden_field :order_id, :value => @order.id%>
+        <%= f.hidden_field :menu_item_id, :value => item.id%>
+        <%= f.number_field :quantity %>
+        <%= f.fields_for :orders do |order|%>
+            <% order.hidden_field :delivery => @delivery%>
+        <% end %>
+        <%= submit_tag "Add to Cart"%>
+    <% end %>     
 <% end %>
 
-<%binding.pry%>
-<%= link_to "#{current_order.line_items.size} items in your cart", cart_path(current_cart) %>
+<br><br>
+<% if current_user%>
+    <%= link_to "#{current_order.line_items.size} items in your cart", cart_path(@current_cart.id) %>
+<% end %>

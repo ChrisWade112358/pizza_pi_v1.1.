@@ -1,10 +1,24 @@
 <div class="nav-container">
-    <nav class='nav-checkbox'>
-        <a href="#" class="logo"><%= link_to image_tag("Pizza_pi_logo_v2.svg"), root_path %></a>
+    <nav class="nav-checkbox">
+        <a class="logo"><%= link_to image_tag("Pizza_pi_logo_v2.svg"), root_path, class: 'logo'%></a>
         <input id="tab-nav" type="checkbox" class="tab-nav">
         <label for="tab-nav" class="tab-nav-label">Menu</label>
         <ul class="tab-content">
-            
+            <% if user_signed_in? %>
+                <li class="nav-item">Welcome <%= current_user.first_name%></li>
+                <li></li>
+                <li class="nav-item"><%= button_to "Edit User", edit_user_registration_path, :method => :get %></li>
+                <li class="nav-item"><%= button_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+                <% if current_user.manager == true %>
+                    <li class="nav-item"><%= button_to "Add Menu Items", new_menu_item_path, :method => :get %></li>
+                    <li class="nav-item"><%= button_to "list Menu Items", menu_items_path, :method => :get %></li>
+                <% end %>
+
+            <% else %>
+                <li class="nav-item"><%= button_to "Sign Up", new_user_registration_path, :method => :get %></li>
+                <li class="nav-item"><%= button_to "Sign In", new_user_session_path, :method => :get %></li>
+            <% end%>
         </ul>
+        
     </nav>
 </div>

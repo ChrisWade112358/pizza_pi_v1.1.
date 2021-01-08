@@ -11,8 +11,10 @@
   </head>
 
   <body>
+    <header><%= render 'shared/navbar'%></header>
     <%= render 'shared/alert' %>
-    <%= render 'shared/navbar'%>
+    <div class="content">
     <%= yield %>
+    </div>
   </body>
 </html>

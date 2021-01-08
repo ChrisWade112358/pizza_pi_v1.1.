@@ -9,6 +9,8 @@ class CartsController < ApplicationController
     end
 
     def show
+        @order.save
+        binding.pry
         @cart = Cart.find_by(id: current_cart.id)
     end
 end

@@ -1,10 +1,16 @@
+
+
+
+
 <h1>Pages#home</h1>
-<% if current_user %>
-    <h1>Welcome <%= current_user.first_name %></h1>
-    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
-    <%= link_to 'Edit User', edit_user_registration_path %>
+<% if user_signed_in?%>
+    <%= button_to "Menu", menus_path, :method => :get %>
+    <% if current_user.manager == true%>
+         <%= button_to "Add Menu Item",new_menu_item_path, :method => :get %>
+          <%= button_to "Index of Menu Items", menu_items_path, :method => :get %>
+    <% end %>
 <% else %>
-    <%= link_to 'Sign Up', new_user_registration_path %>
-    <%= link_to 'Sign In', new_user_session_path %>
-    
+    <h2>Please Sign In to view menu</h2>
 <% end %>
+    
+

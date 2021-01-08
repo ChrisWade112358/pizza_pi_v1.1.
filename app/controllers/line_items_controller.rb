@@ -1,5 +1,6 @@
 class LineItemsController < ApplicationController
-    before_action :current_order, only: [:create, :update, :destroy]
+    before_action :current_order
+    before_action :set_order, only:[:index, :show, :create, :update]
     after_action :set_subtotal, only: [:create, :update, :destroy]
     
 
@@ -13,8 +14,6 @@ class LineItemsController < ApplicationController
     
     def create
         binding.pry
-        @order = current_order
-        #@line_item = @order.line_items.new(line_item_params)
         @line_item = LineItem.create(line_item_params)
         if @line_item.save
             @order.line_item_id = @line_item.id
@@ -48,6 +47,8 @@ class LineItemsController < ApplicationController
     private
 
     def line_item_params
-        params.require(:line_item).permit(:menu_item_id, :quantity, :order_id)
+        params.require(:line_item).permit(:menu_item_id, :quantity, :order_id,
+            order_attributes: [:delivery]
+        )
     end
 end
