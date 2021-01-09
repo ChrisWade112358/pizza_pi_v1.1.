@@ -35,9 +35,6 @@ module ApplicationHelper
         end
     end
 
-    def @menu_item_name
-      MenuItem.find_by(id: @line_item.menu_item_id).name
-    end
-
+    
     
 end

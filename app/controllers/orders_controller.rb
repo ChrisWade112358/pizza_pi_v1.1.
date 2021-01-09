@@ -29,6 +29,7 @@ class OrdersController < ApplicationController
             l = LineItem.all.select{|a| a.order_id == @order.id}
             l.each do |b|
                 b.unit_price = MenuItem.find_by(id: b.menu_item_id).price
+                b.menu_item_name = MenuItem.find_by(id: b.menu_item_id).name
                 b.line_item_subtotal = b.set_line_item_subtotal
                 b.save
                 if b.quantity = 0
