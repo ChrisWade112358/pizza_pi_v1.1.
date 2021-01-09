@@ -43,8 +43,8 @@ class LineItemsController < ApplicationController
     private
 
     def line_item_params
-        params.require(:line_item).permit(:menu_item_id, :quantity, :order_id, :unit_price, :line_item_subtotal,
-            ingredient_attributes: [:name, :price]
+        params.require(:line_item).permit(:menu_item_id, :quantity, :order_id, :unit_price, :line_item_subtotal, :menu_item_name
+    
         )
     end
 

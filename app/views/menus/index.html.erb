@@ -1,6 +1,10 @@
 <h1>Menu Index Page</h1>
 
-
+<%= form_for @order do |form| %>
+    <h1>Delivery ?</h1><%= form.check_box :delivery, checked: @order.delivery? %>
+    
+    <%= form.submit %>
+<% end %>
 
 <% @menu_items.each  do |item| %>
     <h1><%= item.category%></h1>
