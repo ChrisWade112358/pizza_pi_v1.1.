@@ -1,0 +1,14 @@
+
+<%= form_for @order do |f| %>
+    <%= f.hidden_field :cart_id, :value => @dummy_cart.id%>
+    Delivery: <%= f.select(:delivery, Order::DELIVERY) %>
+     <%= f.fields_for :line_items do |li| %>
+        Menu Item:<%= li.select :menu_item_id, MenuItem.all.collect{|p| [p.name, p.id]} %>
+        Quantity:<%= li.number_field(:quantity)%>
+        
+    <% end %>
+   
+
+    <%= f.submit %>
+
+<% end %>

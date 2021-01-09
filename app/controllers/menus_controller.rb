@@ -5,7 +5,7 @@ class MenusController < ApplicationController
     def index
       @menu_items = MenuItem.all
       @line_items = current_order.line_items.build
-      @ingredients.build
+      
     end
   
     def show

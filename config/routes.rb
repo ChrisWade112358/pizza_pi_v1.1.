@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :ingredients
+  
   resources :submissions, only:[:index]
   resources :menus, only:[:index, :show]
   resources :menu_items

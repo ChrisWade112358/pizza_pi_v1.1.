@@ -4,8 +4,7 @@ module ApplicationHelper
           if Cart.find_by(user_id: current_user.id) == nil
             id = SecureRandom.hex(8)
             @current_cart = Cart.create(
-                :user_id => current_user.id,
-                
+                :user_id => current_user.id,    
             )
             @current_cart.save
           else 
@@ -34,6 +33,10 @@ module ApplicationHelper
                 
             end 
         end
+    end
+
+    def @menu_item_name
+      MenuItem.find_by(id: @line_item.menu_item_id).name
     end
 
     

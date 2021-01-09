@@ -1,6 +1,9 @@
 <h1>Menu Item Show</h1>
 
 
+<% if @menu_item.image? %>
+    <%= image_tag(@menu_item.image.url, alt: 'Image') if @menu_item.image? %>
+<% end %>
 
 <h2><%= @menu_item.name %></h2>
 <p>
@@ -14,15 +17,13 @@
     <strong>Description:</strong><br>
     <%= @menu_item.description %>
 </p>
-<% binding.pry %>
 
-<%= form_for @line_items do |f| %>
-    <%= f.hidden_field :order_id, :value => @order.id%>
-    <%= f.hidden_field :menu_item_id, :value => @menu_item.id%>
-    <%= f.hidden_field :unit_price, :value => @menu_item.price%>
-    <%= f.number_field(:quantity, min: 1) %>
+
+<%= form_tag line_items_path, method: :post do%>
+    <%= hidden_field_tag "line_item[order_id]", @order.id%>
+    <%= hidden_field_tag "line_item[menu_item_id]", @menu_item.id%>
+    <%= number_field_tag "line_item[quantity]", 1 %>
     <%= submit_tag "Add to Cart"%>
 <% end %>
-
 
 <%= button_to 'Back', menus_path, :method => :get %>

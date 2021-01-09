@@ -1,12 +1,9 @@
 class LineItem < ApplicationRecord
-    has_many :orders
-    has_many :ingredients
-    belongs_to :menu_item
+    belongs_to :order
+    has_many :menu_items
 
 
-    def line_item_subtotal
-        unit_price = menu_item.price
-        
+    def set_line_item_subtotal
         self[:line_item_subtotal] = unit_price * quantity
     end
 

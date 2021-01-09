@@ -1,5 +1,5 @@
 class MenuItem < ApplicationRecord
-    has_many :line_items
+    belongs_to :line_item
     has_many :orders, through: :line_items 
 
     CATEGORY = ['Pizza', 'Side', 'Drink', 'Dessert', 'Wings']

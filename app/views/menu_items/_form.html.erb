@@ -1,10 +1,10 @@
 <%= form_for @menu_item do |form| %>
     Name: <%= form.text_field :name, required: true %><br>
     Price: <%= form.text_field :price, required: true %><br>
+    <div class="form-group">
+    category: <%= form.select(:category, MenuItem::CATEGORY) %>
+    </div>
     Description: <%= form.text_area :description %><br>
-    <%= form.fields_for :categories do |c| %>
-        Category: <%= c.text_field :category %>
-    <% end %>
     
     <%= form.submit %>
 <% end %>

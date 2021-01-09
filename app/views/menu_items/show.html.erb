@@ -3,10 +3,10 @@
 <% if @menu_item.image? %>
     <%= image_tag(@menu_item.image.url, alt: 'Image') if @menu_item.image? %>
 <% end %>
-<% binding.pry %>
+
 <h2><%= @menu_item.name %></h2>
 <p>
-    <strong>Category: <%= @menu_item.category.name %></strong>
+    <strong>Category: <%= @menu_item.category %></strong>
 </p>
 <p>
     <strong><%= number_to_currency(@menu_item.price) %></strong>

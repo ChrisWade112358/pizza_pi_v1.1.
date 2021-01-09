@@ -1,13 +1,8 @@
 class ApplicationController < ActionController::Base
     include ApplicationHelper
     include OrdersHelper
+    include LineItemsHelper
     
-    
-   
-    
-
-    
-
     
     
     def set_order
@@ -23,10 +18,5 @@ class ApplicationController < ActionController::Base
             @current_cart = Cart.find_by(user_id: current_user.id)
        end
     end
-    
-    
-
-
-
     
 end

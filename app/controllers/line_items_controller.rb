@@ -2,7 +2,7 @@ class LineItemsController < ApplicationController
     before_action :current_order
     before_action :set_order, only:[:index, :show, :create, :update]
     after_action :set_subtotal, only: [:create, :update, :destroy]
-    before_actien :set_line_item, only: [:show, :edit, :update, :destroy]
+    before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
     def index
         @line_items = LineItem.all
@@ -15,8 +15,7 @@ class LineItemsController < ApplicationController
         binding.pry
         @line_item = LineItem.create(line_item_params)
         if @line_item.save
-            @order.line_item_id = @line_item.id
-            @order.save
+            @line_item.line_item_subtotal = set_line_item_subtotal
             redirect_to cart_path(@current_cart), notice: "Item added to cart."
         else
             redirect_to menu_path(@menu_item), alert: "Item did not add to cart."
@@ -44,7 +43,7 @@ class LineItemsController < ApplicationController
     private
 
     def line_item_params
-        params.require(:line_item).permit(:menu_item_id, :quantity, :order_id,
+        params.require(:line_item).permit(:menu_item_id, :quantity, :order_id, :unit_price, :line_item_subtotal,
             ingredient_attributes: [:name, :price]
         )
     end

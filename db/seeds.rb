@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+ dummy_user = User.create(first_name: "Manager's Order", last_name: "Manager's Order", phone_number: "5555555555", email: "dummymanager@aol.com", password: "password")
+ dummy_cart = Cart.create(user_id: dummy_user.id)
+ dummy_menu_item = MenuItem.create(name: "Anchovie Pizza", description: "Disgusting", category: "Pizza", price: "50.00")
