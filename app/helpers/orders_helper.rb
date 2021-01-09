@@ -1,5 +1,6 @@
 module OrdersHelper
     def subtotal
+        binding.pry
         @order.order_subtotal = 0.0
             @order.line_items.each do |line_item|
                 if line_item != nil

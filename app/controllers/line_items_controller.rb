@@ -12,7 +12,6 @@ class LineItemsController < ApplicationController
     end
     
     def create
-        binding.pry
         @line_item = LineItem.create(line_item_params)
         if @line_item.save
             @line_item.line_item_subtotal = set_line_item_subtotal

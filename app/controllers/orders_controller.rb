@@ -13,7 +13,8 @@ class OrdersController < ApplicationController
 
     def new
         @menu_items = MenuItem.all
-        @dummy_cart = Cart.find_by(id: 3)
+        @current_user = User.find_by(first_name: "Manager's Order")
+        @dummy_cart = Cart.find_by(user_id: @current_user)
         @order = Order.new
         @order.line_items.build(quantity: "0")
         @order.line_items.build(quantity: "0")
@@ -24,7 +25,7 @@ class OrdersController < ApplicationController
     def create
         @order = Order.create(order_params)
         current_user = User.find_by(first_name: "Manager's Order")
-        current_cart = Cart.find_by_or_create_by(user_id: current_user.id)
+        current_cart = Cart.find_or_create_by(user_id: current_user.id)
         if @order.save
             l = LineItem.all.select{|a| a.order_id == @order.id}
             l.each do |b|
@@ -35,9 +36,9 @@ class OrdersController < ApplicationController
                 if b.quantity = 0
                     b.delete
                 end
-                binding.pry
             end
-            redirect_to cart_path(@current_cart), notice: "Items added to cart."
+            binding.pry
+            redirect_to carts_alt_path(@current_cart), notice: "Items added to cart."
         else
             render 'new'
         end

@@ -14,7 +14,6 @@
     <strong>Description:</strong><br>
     <%= @menu_item.description %>
 </p>
-<% binding.pry %>
 
 <%= form_for @line_items do |f| %>
     <%= f.hidden_field :order_id, :value => @order.id%>
