@@ -1,5 +1,18 @@
-<h1>Menu Item Show</h1>
-
+<h1>Menu Item</h1>
+<% if @line_items.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@line_items.errors.count, "error") %>
+      prohibited this article from being saved:
+    </h2>
+ 
+    <ul>
+    <% @line_items.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
 
 <h2><%= @menu_item.name %></h2>

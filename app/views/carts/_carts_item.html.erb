@@ -6,20 +6,21 @@
 <% end %>
 
 
-<h1>Order # <%= @current_order.id %></h1>
-<% if @current_order.delivery == true %>
+<h1>Order # <%= @order.id %></h1>
+<% if @order.delivery == true %>
   <h2>Delivery Status: Delivery</h2>
 <% else %>
   <h2>Delivery Status: Carry-Out</h2>
 <% end %>
 
-<% @current_order.line_items.each do |i| %>
+<% @order.line_items.each do |i| %>
 
         <h2><%= i.menu_item_name %></h2>
         <b><%= i.unit_price %></b>
         <%= form_for i, remote: true do |f|%>
           <%= f.hidden_field :menu_item_id, :value => i.menu_item_id %>
           <%= f.number_field :quantity, :value => i.quantity.to_i %> 
+  
           <%= button_to "Delete Item", line_item_path(i), method: :delete, data: { confirm: " Are you sure?" } %>
         <% end %>    
         <i><%= number_to_currency(i.line_item_subtotal) %></i> 

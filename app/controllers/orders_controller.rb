@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-    before_action :set_order, only: [:show, :edit, :update, :destroy]
+    before_action :set_order, only: [:edit, :update, :destroy]
     before_action :current_cart
     before_action :check_for_cart
 
@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
     end
 
     def show
+        @orders = Order.orders_by_cart(current_cart.id).good_orders
     end
 
     def new
@@ -33,6 +34,7 @@ class OrdersController < ApplicationController
                     b.delete
                 end
             end
+            binding.pry
             redirect_to cart_path(@current_cart), notice: "Items added to cart."
         else
             render 'new'

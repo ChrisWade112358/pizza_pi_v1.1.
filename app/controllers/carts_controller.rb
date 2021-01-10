@@ -9,9 +9,11 @@ class CartsController < ApplicationController
     end
 
     def show
-        binding.pry
+        @order.save
         @cart = Cart.find_by(id: current_cart.id)
-        @order_for_name = User.find_by(id: @order.for_user).name
+        if @order.for_user != nil
+            @order_for_name = User.find_by(id: @order.for_user).name
+        end
     end
 
     

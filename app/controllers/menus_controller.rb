@@ -1,6 +1,7 @@
 class MenusController < ApplicationController
     before_action :current_cart
     before_action :check_for_cart
+    before_action :current_order
   
     def index
       @menu_items = MenuItem.all

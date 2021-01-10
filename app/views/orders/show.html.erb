@@ -1,29 +1,23 @@
-<h1>Menu Item Show</h1>
 
+<h1>Previous and Current Orders of:</h1> <%= @current_user.name %>
 
-<% if @menu_item.image? %>
-    <%= image_tag(@menu_item.image.url, alt: 'Image') if @menu_item.image? %>
+<% if @orders != []%>
+    <ul style="list-style-type: none;">
+   <% @orders.each  do |order| %>
+       <li>Order Number:  <%= order.id %></li>
+        <% order.line_items.each  do |item| %>
+            <ul>
+            <li><%= item.menu_item_name %><br></li>
+            <li>quantity: <%= item.quantity%></li>
+            <li>Subtotal: <%= number_to_currency(item.line_item_subtotal) %></li>
+            </ul>
+        <% end %>
+        <li>Total: <%= number_to_currency(order.total) %></li>
+    <% end %>
+    </ul>   
+<% else %>
+    <h2>You haven't ordered anything yet.</h2>
 <% end %>
 
-<h2><%= @menu_item.name %></h2>
-<p>
-    <strong>Category: <%= @menu_item.category %></strong>
-</p>
-<p>
-    <strong><%= @menu_item.price %></strong>
-</p>
 
-<p>
-    <strong>Description:</strong><br>
-    <%= @menu_item.description %>
-</p>
-
-
-<%= form_tag line_items_path, method: :post do%>
-    <%= hidden_field_tag "line_item[order_id]", @order.id%>
-    <%= hidden_field_tag "line_item[menu_item_id]", @menu_item.id%>
-    <%= number_field_tag "line_item[quantity]", 1 %>
-    <%= submit_tag "Add to Cart"%>
-<% end %>
-
-<%= button_to 'Back', menus_path, :method => :get %>
+<%= button_to 'Back', root_path, :method => :get %>
