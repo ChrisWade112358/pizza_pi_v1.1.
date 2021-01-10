@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_09_203522) do
+ActiveRecord::Schema.define(version: 2021_01_09_225602) do
 
   create_table "carts", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2021_01_09_203522) do
     t.decimal "master_tax_rate"
     t.decimal "tax_rate", default: "0.07"
     t.decimal "delivery_fee", default: "5.0"
+    t.integer "for_user"
   end
 
   create_table "sessions", force: :cascade do |t|

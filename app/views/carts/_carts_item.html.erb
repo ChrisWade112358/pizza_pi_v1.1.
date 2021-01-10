@@ -1,5 +1,7 @@
+
 <h3>This cart belongs to: <%= @current_cart.user.first_name %></h3>
 
+<%binding.pry%>
 
 <h1>Order # <%= @current_order.id %></h1>
 <% if @current_order.delivery == true %>

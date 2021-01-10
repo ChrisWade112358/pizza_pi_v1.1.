@@ -20,7 +20,6 @@ module ApplicationHelper
     
 
     def current_order
-        
         @order = Order.cart_orders(current_cart.id).last
         if @order == nil
             

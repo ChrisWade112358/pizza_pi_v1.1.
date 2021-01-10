@@ -1,10 +1,11 @@
-<% binding.pry %>
+
 <%= form_for @order do |f| %>
-    <%= f.hidden_field :cart_id, :value => @dummy_cart.id%>
-    Delivery: <%= f.select(:delivery, Order::DELIVERY) %>
+    <%= f.hidden_field :cart_id, :value => current_user.id%>
+    Order For<%= f.select :for_user, User.all.collect{|u| [u.email, u.id]} %><br>
+    Delivery: <%= f.select(:delivery, Order::DELIVERY) %><br>
      <%= f.fields_for :line_items do |li| %>
-        Menu Item:<%= li.select :menu_item_id, MenuItem.all.collect{|p| [p.name, p.id]} %>
-        Quantity:<%= li.number_field(:quantity)%>
+        Menu Item:<%= li.select :menu_item_id, MenuItem.all.collect{|p| [p.name, p.id]} %><br>
+        Quantity:<%= li.number_field(:quantity, min: 0) %><br>
         
     <% end %>
    
