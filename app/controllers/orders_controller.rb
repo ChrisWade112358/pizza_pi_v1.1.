@@ -33,7 +33,6 @@ class OrdersController < ApplicationController
                     b.delete
                 end
             end
-            binding.pry
             redirect_to cart_path(@current_cart), notice: "Items added to cart."
         else
             render 'new'
