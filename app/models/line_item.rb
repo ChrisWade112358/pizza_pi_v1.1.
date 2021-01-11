@@ -1,6 +1,7 @@
 class LineItem < ApplicationRecord
-    belongs_to :order
+    has_many :orders
     has_many :menu_items
+    validates :order_id, :menu_item_id, presence: true
 
 
     def set_line_item_subtotal

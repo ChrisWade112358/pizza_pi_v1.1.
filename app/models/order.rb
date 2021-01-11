@@ -5,7 +5,7 @@ class Order < ApplicationRecord
     accepts_nested_attributes_for :line_items
     scope :good_orders, -> {where("total != 0")}
     scope :orders_by_cart, ->(cart) {where("cart_id == ?", cart)}
-
+    validates :cart_id, presence: true
     
     
     

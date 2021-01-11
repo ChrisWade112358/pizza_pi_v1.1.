@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_one :cart
   has_many :orders, through: :cart
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook, :github, :twitter]
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook]
   
   validates :first_name, :last_name, :phone_number, presence: true
   
