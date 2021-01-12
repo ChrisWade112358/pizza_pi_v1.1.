@@ -1,7 +1,8 @@
 class LineItem < ApplicationRecord
-    has_many :orders
-    has_many :menu_items
-    validates :order_id, :menu_item_id, presence: true
+    belongs_to :order
+    belongs_to :menu_item
+    
+  
 
 
     def set_line_item_subtotal
@@ -10,6 +11,26 @@ class LineItem < ApplicationRecord
 
 
     
+    def unit_price
+        if persisted?
+            self[:unit_price]
+        else
+            binding.pry
+            menu_item.price
+        end
+    end
 
+    
+
+
+    private
+
+    def set_unit_price
+        slef[:unit_price] = unit_price
+    end
+
+    def set_line_item_subtotal
+        @line_item.line_item_subtotal = @line_item.unit_price * @line_item.quantity
+    end
     
 end

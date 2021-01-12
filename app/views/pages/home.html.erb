@@ -1,9 +1,9 @@
 
 
 
-
 <h1>Pages#home</h1>
 <% if user_signed_in?%>
+    
     <%= button_to "Menu", menus_path, :method => :get %>
     <%= button_to "Order history", cart_orders_path(current_cart), :method => :get %>
     <% if current_user.manager == true%>

@@ -19,3 +19,5 @@
 
 <%= button_to "Edit", edit_menu_item_path(@menu_item), :method => :get %>
 <%= button_to "Delete", menu_item_path(@menu_item), method: :delete, data: { confirm: " Are you sure?" } %>
+
+<%= link_to "back", menu_items_path %>

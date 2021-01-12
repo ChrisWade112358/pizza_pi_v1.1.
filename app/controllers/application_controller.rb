@@ -5,9 +5,7 @@ class ApplicationController < ActionController::Base
     
     
     
-    def set_order
-        @order = current_order
-    end
+    
             
 
 

@@ -31,5 +31,5 @@
 
 <br><br>
 <% if current_user%>
-    <%= link_to "#{current_order.line_items.size} items in your cart", cart_orders_path(@current_cart ) %>
+    <%= link_to "#{current_order.line_items.size} items in your cart", cart_path(@current_cart ) %>
 <% end %>

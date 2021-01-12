@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :submissions, only:[:index]
   resources :menus, only:[:index, :show]
   resources :menu_items
-  resources :orders, except: [:new,:show]
+  resources :orders, except: [:new, :show]
   root to: 'pages#home'
   devise_for :users, controllers: {omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations'}
   resources :carts  do

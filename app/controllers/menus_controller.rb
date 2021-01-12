@@ -5,13 +5,13 @@ class MenusController < ApplicationController
   
     def index
       @menu_items = MenuItem.all
-      @line_items = current_order.line_items.build
+      @line_items = current_order.line_items.new
       
     end
   
     def show
       @menu_item = MenuItem.find(params[:id])
-      @line_items = current_order.line_items.build
+      @line_items = current_order.line_items.new
     end
   
   

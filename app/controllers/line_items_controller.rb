@@ -1,23 +1,22 @@
 class LineItemsController < ApplicationController
-    before_action :current_order
     before_action :set_order, only:[:index, :show, :create, :update]
-    after_action :set_subtotal, only: [:create, :update, :destroy]
     before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
     def index
         @line_items = LineItem.all
     end
 
-    def show
-    end
     
     def create
+        
         @line_item = LineItem.create(line_item_params)
-        if @line_item.save
+        if @line_item.valid?
+            @line_item.unit_price = @line_item.menu_item.price
             @line_item.line_item_subtotal = set_line_item_subtotal
+            @line_item.save
             redirect_to cart_path(@current_cart), notice: "Item added to cart."
         else
-            redirect_to menu_path(@menu_item), alert: "Item did not add to cart."
+            redirect_to menu_path, alert: "Item did not add to cart."
         end    
     end
 

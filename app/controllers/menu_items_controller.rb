@@ -15,7 +15,7 @@ class MenuItemsController < ApplicationController
 
     def create
         @menu_item = MenuItem.create(menu_item_params)
-        if @menu_item.save
+        if @menu_item.valid?
             redirect_to menu_item_path(@menu_item), notice: "Menu item was successfully created."
         else
             render 'new'

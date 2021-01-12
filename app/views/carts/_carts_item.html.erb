@@ -15,12 +15,11 @@
 
 <% @order.line_items.each do |i| %>
 
-        <h2><%= i.menu_item_name %></h2>
-        <b><%= i.unit_price %></b>
+        <h2><%= i.menu_item.name %></h2>
+        <b><%= number_to_currency(i.menu_item.price) %></b>
         <%= form_for i, remote: true do |f|%>
-          <%= f.hidden_field :menu_item_id, :value => i.menu_item_id %>
+          <%= f.hidden_field :menu_item_id, :value => i.menu_item.id %>
           <%= f.number_field :quantity, :value => i.quantity.to_i %> 
-  
           <%= button_to "Delete Item", line_item_path(i), method: :delete, data: { confirm: " Are you sure?" } %>
         <% end %>    
         <i><%= number_to_currency(i.line_item_subtotal) %></i> 
@@ -34,10 +33,10 @@
 <h3>Tax: <%= number_to_currency(@order.tax)%></h3>
 <h2>Total: <%= number_to_currency(@order.total)%></h2>
 
-<% if @current_cart.user.first_name == "Manager's Order"%>
-    <%= button_to 'Return to Menu', new_order_path, :method => :get %>
-<% else %>
+<% if @order.for_user == nil %>
     <%= button_to 'Return to Menu', menus_path, :method => :get %>
+<% else %>
+    
 <% end %>
 
 <%= button_to 'Submit your order', submissions_path, :method => :get %>

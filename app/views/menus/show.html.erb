@@ -31,9 +31,6 @@
 <%= form_for @line_items do |f| %>
     <%= f.hidden_field :order_id, :value => @order.id%>
     <%= f.hidden_field :menu_item_id, :value => @menu_item.id%>
-    <%= f.hidden_field :unit_price, :value => @menu_item.price%>
-    <%= f.hidden_field :for_user, :value => @current_user.id%>
-    <%= f.hidden_field :menu_item_name, :value => @menu_item.name%>
     <%= f.number_field(:quantity, min: 1) %>
     <%= submit_tag "Add to Cart"%>
 <% end %>

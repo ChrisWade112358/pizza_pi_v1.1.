@@ -6,10 +6,11 @@ class Order < ApplicationRecord
     scope :good_orders, -> {where("total != 0")}
     scope :orders_by_cart, ->(cart) {where("cart_id == ?", cart)}
     validates :cart_id, presence: true
+   
     
     
     
-    DELIVERY = [true, false]
+    
 
     def self.cart_orders(id)
         where("cart_id == ?", id)
